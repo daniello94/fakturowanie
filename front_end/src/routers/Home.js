@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import moment from "moment";
 import "./Home.css"
+
 export default function Home() {
     const [error, setError] = useState('');
     const [firstName, setFirstName] = useState('');
@@ -16,7 +18,7 @@ export default function Home() {
     const [nameCourse, setNameCourse] = useState('');
     const [priceCourse, setPriceCourse] = useState('')
     const [sumPriceCourse, setSumPraiseCourse] = useState('')
-
+  
     function valuePriceCourse() {
         if (nameCourse === 'Kurs Front End Developer') {
             return '2000'
@@ -71,7 +73,7 @@ export default function Home() {
         axios.post('http://127.0.0.1:8080/client/add', formData)
             .then(() => {
                 setError(
-                    <p>Zgłoszenie zostało przyjęte pomyśłnie</p>
+                    <p>Zgłoszenie zostało przyjęte pomyśłnie dnia </p>
                 )
             })
 
@@ -89,17 +91,17 @@ export default function Home() {
                     <p>Zgłoszenie zostało przyjęte pomyśłnie</p>
                 )
             })
-        setFirstName('');
-        setLastName('');
-        setNameCompany('');
-        setNumberId('');
-        setStreet('');
-        setTypePerson('');
-        setNumberIdCompany('');
-        setStreet('');
-        setZipCode('');
-        setCity('');
-        setNameCourse('')
+        // setFirstName('');
+        // setLastName('');
+        // setNameCompany('');
+        // setNumberId('');
+        // setStreet('');
+        // setTypePerson('');
+        // setNumberIdCompany('');
+        // setStreet('');
+        // setZipCode('');
+        // setCity('');
+        // setNameCourse('')
     };
     useEffect(() => {
         setSumPraiseCourse(sumPriceCourseAles());

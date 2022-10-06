@@ -7,7 +7,6 @@ function invoiceAdd(data, cb) {
             cb(err)
         } else {
             cb(null, invoice);
-            console.log(invoice);
         }
     });
    

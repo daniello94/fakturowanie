@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const Client = require('../models/Client').schema
+const moment = require('moment')
 mongoose.connect('mongodb://' + process.env.DB_HOST + '/' + process.env.DB_NAME, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const schema = mongoose.Schema({
@@ -22,6 +23,10 @@ const schema = mongoose.Schema({
         numberId: {
             type: String,
             default: '76252421551'
+        },
+        BankAccountNumber:{
+            type: String,
+            default: 'PL 2576352735253257352753725372573527537'
         },
         address: {
             city: {
@@ -54,5 +59,9 @@ const schema = mongoose.Schema({
         type: String,
         default: ''
     },
+    dataIssue:{
+        type: String,
+        default: moment(new Date).format('DD-MM-YYYY')
+    }
 });
 module.exports = mongoose.model("Invoice", schema)
