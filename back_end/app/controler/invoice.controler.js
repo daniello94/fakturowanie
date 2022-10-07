@@ -6,7 +6,7 @@ function invoiceAdd(data, cb) {
         if (err) {
             cb(err)
         } else {
-            cb(null, invoice);
+            cb(null, invoice.toJSON());
         }
     });
    

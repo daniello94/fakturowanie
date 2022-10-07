@@ -18,7 +18,7 @@ export default function Home() {
     const [nameCourse, setNameCourse] = useState('');
     const [priceCourse, setPriceCourse] = useState('')
     const [sumPriceCourse, setSumPraiseCourse] = useState('')
-  
+
     function valuePriceCourse() {
         if (nameCourse === 'Kurs Front End Developer') {
             return '2000'
@@ -91,17 +91,17 @@ export default function Home() {
                     <p>Zgłoszenie zostało przyjęte pomyśłnie</p>
                 )
             })
-        // setFirstName('');
-        // setLastName('');
-        // setNameCompany('');
-        // setNumberId('');
-        // setStreet('');
-        // setTypePerson('');
-        // setNumberIdCompany('');
-        // setStreet('');
-        // setZipCode('');
-        // setCity('');
-        // setNameCourse('')
+        setFirstName('');
+        setLastName('');
+        setNameCompany('');
+        setNumberId('');
+        setStreet('');
+        setTypePerson('');
+        setNumberIdCompany('');
+        setStreet('');
+        setZipCode('');
+        setCity('');
+        setNameCourse('')
     };
     useEffect(() => {
         setSumPraiseCourse(sumPriceCourseAles());
@@ -134,7 +134,7 @@ export default function Home() {
                     value={typePerson}
                     onChange={(e) => setTypePerson(e.target.value)}
                 >
-                    <option>Wybierz Rodzaj</option>
+                    <option>Rodzaj Faktury</option>
                     <option>Osoba prywatna</option>
                     <option>Firma</option>
                 </select>
@@ -192,30 +192,34 @@ export default function Home() {
                     />
                 </label>
 
-                <label>
-                    <span>Rodazj Kursu</span>
-                    <select
-                        type='text'
-                        name="nameCourse"
-                        value={nameCourse}
-                        onChange={(e) => setNameCourse(e.target.value)}
-                    >
-                        <option>Wybierz</option>
-                        <option>Kurs Front End Developer</option>
-                        <option>Kurs Full Stack Developer</option>
-                    </select>
-                    {nameCourse === "Kurs Front End Developer" && (
-                        <span>
-                            <p>Cena Kursu : {sumPriceCourse} zł</p>
-                        </span>
-                    )}
+                {typePerson !== "" && typePerson !== "Rodzaj Faktury" && (
+                    <label>
+                        <span>Rodazj Kursu</span>
+                        <select
+                            type='text'
+                            name="nameCourse"
+                            value={nameCourse}
+                            onChange={(e) => setNameCourse(e.target.value)}
+                        >
+                            <option>Wybierz</option>
+                            <option>Kurs Front End Developer</option>
+                            <option>Kurs Full Stack Developer</option>
+                        </select>
+                        {nameCourse === "Kurs Front End Developer" && (
+                            <span>
+                                <p>Cena Kursu : {sumPriceCourse} zł</p>
+                            </span>
+                        )}
 
-                    {nameCourse === "Kurs Full Stack Developer" && (
-                        <span>
-                            <p>Cena Kursu : {sumPriceCourse} zł</p>
-                        </span>
-                    )}
-                </label>
+                        {nameCourse === "Kurs Full Stack Developer" && (
+                            <span>
+                                <p>Cena Kursu : {sumPriceCourse} zł</p>
+                            </span>
+                        )}
+                    </label>
+
+                )}
+
                 <button
                     type="submit"
                     onClick={addClient}>Generuj Fakture</button>

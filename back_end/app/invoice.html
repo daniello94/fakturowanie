@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faktura</title>
+    <style>
+        .invoice {
+            border: 2px solid black;
+            width: 80%;
+            padding: 10px 10px;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            
+        }
+
+        .invoice .dataInvoice {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .invoice .dataInvoice table {
+            margin-left: auto;
+            margin-right: 0;
+            width: 30%;
+            padding: 10px 10px;
+        }
+
+        .invoice .dataInvoice table thead tr td {
+            border: 2px solid black;
+            padding: 10px;
+        }
+
+        .invoice .dataInvoice table thead tr .header {
+            background-color: rgb(160, 150, 150);
+        }
+
+        .invoice .data {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+           
+        }
+
+        .invoice .data .invoiceData {
+            width: 49%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+
+        .invoice .data .invoiceData span h5 {
+            background-color: rgb(160, 150, 150);
+            border: 2px solid black;
+            padding: 20px;
+        }
+
+        .invoice .data .invoiceData span p {
+            text-align: left;
+            font-size: 15px;
+            margin-bottom: 0;
+            margin-top: 0;
+        }
+
+        .invoice .data .invoiceData span .dataCompany {
+            font-weight: bold
+        }
+
+        .invoice .dataPrice {
+            border: 2px solid black;
+            width: 100%;
+        }
+
+        .invoice .dataPrice thead tr td,
+        .invoice .dataSumPrice thead tr td,
+        .invoice .dataSumPrice tbody .dataSumPrice {
+            border: 2px solid black;
+            background-color: rgb(160, 150, 150);
+            padding: 5px;
+        }
+
+        .invoice .dataPrice tbody tr td,
+        .invoice .dataSumPrice tbody tr td {
+            border: 2px solid black;
+            padding: 5px;
+        }
+
+        .invoice .dataSumPrice {
+            border: 2px solid black;
+            width: 70%;
+            margin-right: 0;
+            margin-left: auto;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <section class="invoice">
+        <section class="dataInvoice">
+            <table>
+                <thead>
+                    <tr>
+                        <td class="header">Mmiejsce Wystawienia</td>
+                        <td>Witryna internetowa</td>
+
+                    </tr>
+                    <tr>
+                        <td class="header">Data usługi</td>
+                        <td>{{dataIssue}}</td>
+                    </tr>
+                    <tr>
+                        <td class="header">Data wystawienia</td>
+                        <td>{{dataIssue}}</td>
+                    </tr>
+                </thead>
+            </table>
+        </section>
+        <section class="data">
+            <div class="invoiceData">
+                <span>
+                    <h5>Nabywca</h5>
+                </span>
+                <span>
+                    <p>{{nameClient}} {{lastNameClient}}</p>
+                    <p>{{addressClientCity}}</p>
+                    <p>{{addressClientStreet}}</p>
+                    <p>{{addressClientZipCode}}</p>
+                    <p>{{numberCompanyIdClient}}</p>
+                    <p>{{nameCompanyClient}}</p>
+                    <p>{{numberIdClient}}</p>
+                </span>
+            </div>
+            <div class="invoiceData">
+                <span>
+                    <h5>Sprzedawca</h5>
+                </span>
+                <span>
+                    <p>{{firstName}} {{lastName}}</p>
+                    <p class="dataCompany"> Dane Firmy</p>
+                    <p> {{nameCompany}}</p>
+                    <p> {{numberId}}</p>
+                    <p class="dataCompany"> Adres</p>
+                    <p>{{city}}</p>
+                    <p>{{street}}</p>
+                    <p>{{zipCode}}</p>
+
+                </span>
+
+            </div>
+        </section>
+        <h1>Faktura nr {{dataIssue}}/{{numberInvoice}}</h1>
+
+        <table class="dataPrice">
+            <thead>
+                <tr>
+                    <td>Nazwa</td>
+                    <td>Cena Netto</td>
+                    <td>Vat</td>
+                    <td>Cena Brutto</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{nameCourse}}</td>
+                    <td>{{priceCourse}} zł</td>
+                    <td>{{vat}} </td>
+                    <td>{{sumPriceCourse}} zł </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <table class="dataSumPrice">
+            <thead>
+                <tr>
+                    <td>Razem do zapłaty</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{sumPriceCourse}} zł</td>
+                </tr>
+                <tr class="dataSumPrice">
+                    <td>Numer konta wpłaty</td>
+                </tr>
+                <tr>
+                    <td>{{BankAccountNumber}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </section>
+</body>
+
+</html>
